@@ -1,0 +1,8 @@
+{
+  "subject": "Algebra",
+  "path": [
+    { "id": "algebra_1", "type": "lesson", "position": "left" },
+    { "id": "algebra_quiz_1", "type": "quiz", "position": "right" },
+    { "id": "algebra_2", "type": "lesson", "position": "left" }
+  ]
+}

@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="dracula   ">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`} suppressHydrationWarning={true}
       >
         <Header/>
         {children}

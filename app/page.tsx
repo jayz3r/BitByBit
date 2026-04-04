@@ -24,13 +24,13 @@ export default function Home() {
                 programming, and more.
               </p>
               <div className="links flex flex-col gap-4 max-w-xs mx-auto lg:mx-auto">
-                <Link href="/courses" className="w-full">
+                <Link href="/learn" className="w-full">
                   <button className="btn btn-primary w-full text-white">
                     Get Started
                   </button>
                 </Link>
                 <Link href="/login" className="w-full">
-                  <button className="btn btn-secondary w-full">
+                  <button className="btn btn-soft w-full">
                     Already have an account
                   </button>
                 </Link>
