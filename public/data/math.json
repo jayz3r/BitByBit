@@ -1,0 +1,37 @@
+[
+  {
+    "id": "algebra_1",
+    "title": "Linear Equations",
+    "description": "Learn how to solve linear equations in one variable.",
+    "type": "lesson",
+    "content": "A linear equation is of the form ax + b = 0. To solve it, isolate x by subtracting b and dividing by a.",
+    "examples": [
+      {
+        "question": "Solve for x: 2x + 3 = 7",
+        "solution": "x = 2"
+      },
+      {
+        "question": "Solve for x: 5x - 10 = 0",
+        "solution": "x = 2"
+      }
+    ]
+  },
+  {
+    "id": "algebra_quiz_1",
+    "title": "Linear Equation Quiz",
+    "description": "Test your knowledge of solving linear equations.",
+    "type": "quiz",
+    "questions": [
+      {
+        "question": "Solve for x: 3x + 9 = 0",
+        "options": ["-3", "3", "0", "9"],
+        "answer": "-3"
+      },
+      {
+        "question": "Solve for x: 4x - 16 = 0",
+        "options": ["4", "16", "0", "-4"],
+        "answer": "4"
+      }
+    ]
+  }
+]
