@@ -143,7 +143,7 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <Footer/>
+      {/* <Footer/> */}
     </main>
   );
 }
