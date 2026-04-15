@@ -1,8 +1,32 @@
-{
-  "subject": "Algebra",
-  "path": [
-    { "id": "algebra_1", "type": "lesson", "position": "left" },
-    { "id": "algebra_quiz_1", "type": "quiz", "position": "right" },
-    { "id": "algebra_2", "type": "lesson", "position": "left" }
-  ]
-}
+[
+  {
+    "subject": "Math",
+    "path": [
+      { "id": "algebra_1", "type": "lesson", "position": "left" },
+      { "id": "algebra_quiz_1", "type": "quiz", "position": "right" },
+      { "id": "algebra_2", "type": "lesson", "position": "left" },
+      { "id": "chest_1", "type": "chest", "position": "right" },
+      { "id": "algebra_final", "type": "trophy", "position": "left" }
+    ]
+  },
+  {
+    "subject": "Python",
+    "path": [
+      { "id": "python_1", "type": "lesson", "position": "left" },
+      { "id": "python_quiz_1", "type": "quiz", "position": "right" },
+      { "id": "python_2", "type": "lesson", "position": "left" },
+      { "id": "python_chest_1", "type": "chest", "position": "right" },
+      { "id": "python_final", "type": "trophy", "position": "left" }
+    ]
+  },
+  {
+    "subject": "ORT",
+    "path": [
+      { "id": "ort_1", "type": "lesson", "position": "left" },
+      { "id": "ort_quiz_1", "type": "quiz", "position": "right" },
+      { "id": "ort_2", "type": "lesson", "position": "left" },
+      { "id": "ort_chest_1", "type": "chest", "position": "right" },
+      { "id": "ort_final", "type": "trophy", "position": "left" }
+    ]
+  }
+]
