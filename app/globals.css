@@ -30,3 +30,30 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+.group:hover > div {
+  will-change: transform, opacity;
+}
+
+/* Optimize smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* GPU acceleration for smooth animations */
+.animate-bounce {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.group {
+  transform: translateZ(0);
+}

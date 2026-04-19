@@ -1,0 +1,38 @@
+[
+  {
+    "id": "python",
+    "name": "Python",
+    "icon": "🐍",
+    "description": "Master programming from basics to advanced",
+    "color": "from-blue-500 to-cyan-500",
+    "bgColor": "bg-blue-500",
+    "students": "15.2K",
+    "lessons": 25,
+    "difficulty": "Beginner",
+    "shortDesc": "Learn to code with Python"
+  },
+  {
+    "id": "math",
+    "name": "Math",
+    "icon": "📐",
+    "description": "Build strong mathematical foundations",
+    "color": "from-purple-500 to-pink-500",
+    "bgColor": "bg-purple-500",
+    "students": "12.8K",
+    "lessons": 20,
+    "difficulty": "Intermediate",
+    "shortDesc": "Master mathematics concepts"
+  },
+  {
+    "id": "ort",
+    "name": "ORT",
+    "icon": "🔧",
+    "description": "Learn industry-standard tools and practices",
+    "color": "from-orange-500 to-red-500",
+    "bgColor": "bg-orange-500",
+    "students": "8.5K",
+    "lessons": 18,
+    "difficulty": "Advanced",
+    "shortDesc": "Industry-ready skills"
+  }
+]

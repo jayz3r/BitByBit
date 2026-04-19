@@ -3,48 +3,50 @@
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-function LessonLayout({ lesson }: any) {
+function LessonLayout({
+  lesson,
+  onComplete,
+  subject,
+}: {
+  lesson: any;
+  onComplete?: () => void;
+  subject: string;
+}) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const subject = searchParams.get("subject") || "math";
-  
+  const querySubject = searchParams.get("subject") || subject;
+
   const [isCompleted, setIsCompleted] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
-  // Check if lesson is already completed
   useEffect(() => {
     setIsMounted(true);
     const completed = JSON.parse(
-      localStorage.getItem(`completed_lessons_${subject}`) || "[]"
+      localStorage.getItem(`completed_lessons_${querySubject}`) || "[]"
     );
     const lessonCompleted = completed.includes(lesson.id);
-    console.log(`Checking ${lesson.id} in ${subject}:`, lessonCompleted, completed);
     setIsCompleted(lessonCompleted);
-  }, [lesson.id, subject]);
+  }, [lesson.id, querySubject]);
 
-  // Mark lesson as completed and redirect
   const handleMarkComplete = () => {
-    console.log(`Marking ${lesson.id} as complete for subject: ${subject}`);
-    
     const completed = JSON.parse(
-      localStorage.getItem(`completed_lessons_${subject}`) || "[]"
+      localStorage.getItem(`completed_lessons_${querySubject}`) || "[]"
     );
 
     if (!completed.includes(lesson.id)) {
       completed.push(lesson.id);
       localStorage.setItem(
-        `completed_lessons_${subject}`,
+        `completed_lessons_${querySubject}`,
         JSON.stringify(completed)
       );
-      console.log("Updated localStorage:", completed);
     }
 
     setIsCompleted(true);
 
-    // Redirect back to learning path
-    setTimeout(() => {
-      router.push(`/learning-path?subject=${subject}`);
-    }, 500);
+    // Call the onComplete callback if provided
+    if (onComplete) {
+      setTimeout(() => onComplete(), 500);
+    }
   };
 
   if (!isMounted) {
@@ -52,46 +54,64 @@ function LessonLayout({ lesson }: any) {
   }
 
   return (
-    <div className="space-y-6 max-w-3xl mx-auto">
-      <div className="card bg-base-200 shadow-xl p-8">
-        <h2 className="text-2xl font-semibold mb-4">The Concept</h2>
-        <p className="text-lg leading-relaxed italic">{lesson.content}</p>
+    <div className="space-y-8">
+      {/* Content Section */}
+      <div className="prose prose-lg max-w-none">
+        <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 border-2 border-blue-200">
+          <div className="whitespace-pre-wrap text-slate-700 leading-relaxed font-medium">
+            {lesson.content}
+          </div>
+        </div>
       </div>
 
+      {/* Examples Section */}
       {lesson.examples && lesson.examples.length > 0 && (
-        <>
-          <h3 className="text-2xl font-bold mt-8">Practice Examples</h3>
+        <div className="space-y-4">
+          <h2 className="text-2xl font-bold text-slate-800">📝 Examples</h2>
           <div className="grid gap-4">
-            {lesson.examples.map((ex: any, i: number) => (
-              <div
+            {lesson.examples.map((example: any, i: number) => (
+              <details
                 key={i}
-                className="collapse collapse-plus bg-base-100 border border-base-300"
+                className="group border-2 border-amber-300 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 p-6 cursor-pointer hover:shadow-lg transition"
               >
-                <input type="radio" name="my-accordion-3" />
-                <div className="collapse-title text-xl font-medium">
-                  {ex.question}
+                <summary className="font-bold text-slate-800 text-lg flex items-center gap-3">
+                  <span className="text-2xl group-open:hidden">▶</span>
+                  <span className="text-2xl hidden group-open:inline">▼</span>
+                  {example.question}
+                </summary>
+                <div className="mt-4 pt-4 border-t-2 border-amber-300 text-slate-700 font-medium">
+                  <pre className="whitespace-pre-wrap bg-white rounded-lg p-4 text-sm overflow-x-auto">
+                    {example.solution}
+                  </pre>
                 </div>
-                <div className="collapse-content">
-                  <p className="text-success font-bold text-lg">{ex.solution}</p>
-                </div>
-              </div>
+              </details>
             ))}
           </div>
-        </>
+        </div>
       )}
 
-      {/* Completion Button */}
-      <div className="mt-8 flex justify-center">
+      {/* Key Takeaways */}
+      <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 border-2 border-green-300">
+        <h3 className="font-bold text-green-800 text-lg mb-4">💡 Key Takeaway</h3>
+        <p className="text-slate-700 font-medium leading-relaxed">
+          {lesson.type === "lesson"
+            ? "Master this concept by practicing more examples. Try variations of these problems!"
+            : "Great job learning! Ready to test your knowledge?"}
+        </p>
+      </div>
+
+      {/* Complete Button */}
+      <div className="flex justify-center pt-4">
         <button
           onClick={handleMarkComplete}
           disabled={isCompleted}
-          className={`btn btn-lg gap-2 ${
+          className={`px-8 py-4 rounded-2xl font-bold text-lg transition transform hover:scale-105 shadow-xl ${
             isCompleted
-              ? "btn-success btn-disabled"
-              : "btn-primary hover:btn-success"
+              ? "bg-gradient-to-r from-green-400 to-emerald-400 text-white cursor-default"
+              : "bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:shadow-2xl"
           }`}
         >
-          {isCompleted ? "✓ Completed" : "✓ Mark as Complete"}
+          {isCompleted ? "✓ Lesson Complete" : "✓ Mark as Complete"}
         </button>
       </div>
     </div>

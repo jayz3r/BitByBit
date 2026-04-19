@@ -2,11 +2,12 @@ import Link from "next/link";
 import Image from "next/image";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import CoursesSection from "./components/CoursesSection";
 
 export default function Home() {
   return (
     <main className="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen">
-        <Header/>
+      <Header />
 
       {/* Hero Section */}
       <div className="pt-32 px-6 pb-20">
@@ -27,8 +28,9 @@ export default function Home() {
                   </span>
                 </h1>
                 <p className="text-xl text-slate-300 leading-relaxed">
-                  Practice skills, track your progress, and get AI-powered guidance. 
-                  Learn programming, math, languages, and more—all at your own pace.
+                  Practice skills, track your progress, and get AI-powered
+                  guidance. Learn programming, math, languages, and more—all at
+                  your own pace.
                 </p>
               </div>
 
@@ -86,7 +88,9 @@ export default function Home() {
                 <div className="w-80 h-80 bg-gradient-to-br from-purple-500/30 to-pink-500/30 rounded-3xl border border-purple-400/30 backdrop-blur-sm flex items-center justify-center">
                   <div className="text-center space-y-4">
                     <div className="text-6xl">📚</div>
-                    <p className="text-white font-semibold">Learning in Progress</p>
+                    <p className="text-white font-semibold">
+                      Learning in Progress
+                    </p>
                     <div className="space-y-2">
                       <div className="h-2 bg-slate-700 rounded-full w-32 mx-auto"></div>
                       <div className="h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full w-24 mx-auto"></div>
@@ -96,51 +100,56 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+          <div className="mt-20 pt-16 border-t border-purple-500/20">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-white mb-4">
+                Why Choose Our Courses?
+              </h2>
+              <p className="text-slate-300">
+                Everything you need to master new skills
+              </p>
+            </div>
 
-      {/* Courses Preview Section */}
-      <div className="py-20 px-6 border-t border-purple-500/20">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-white text-center mb-12">
-            Popular Courses
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                icon: "🐍",
-                title: "Python",
-                desc: "Master programming from basics to advanced",
-                color: "from-blue-500 to-cyan-500"
-              },
-              {
-                icon: "📐",
-                title: "Math",
-                desc: "Build strong mathematical foundations",
-                color: "from-purple-500 to-pink-500"
-              },
-              {
-                icon: "🔧",
-                title: "ORT",
-                desc: "Learn industry-standard tools and practices",
-                color: "from-orange-500 to-red-500"
-              }
-            ].map((course, i) => (
-              <div key={i} className="group relative">
-                <div className={`absolute inset-0 bg-gradient-to-r ${course.color} rounded-xl opacity-0 group-hover:opacity-20 transition blur-xl`}></div>
-                <div className="relative bg-slate-800/50 backdrop-blur border border-slate-700/50 rounded-xl p-6 hover:border-purple-500/50 transition">
-                  <div className="text-4xl mb-4">{course.icon}</div>
-                  <h3 className="text-xl font-bold text-white mb-2">{course.title}</h3>
-                  <p className="text-slate-400 mb-4">{course.desc}</p>
-                  <button className={`w-full py-2 rounded-lg bg-gradient-to-r ${course.color} text-white font-semibold hover:shadow-lg transition`}>
-                    Learn More
-                  </button>
+            <div className="grid md:grid-cols-4 gap-6">
+              {[
+                {
+                  icon: "🎯",
+                  title: "Structured Learning",
+                  desc: "Curated paths from beginner to expert",
+                },
+                {
+                  icon: "⚡",
+                  title: "Quick Progress",
+                  desc: "Learn in bite-sized lessons",
+                },
+                {
+                  icon: "🏆",
+                  title: "Gamified",
+                  desc: "Earn achievements and unlock levels",
+                },
+                {
+                  icon: "📊",
+                  title: "Track Progress",
+                  desc: "Monitor your learning journey",
+                },
+              ].map((feature, i) => (
+                <div
+                  key={i}
+                  className="bg-slate-800/50 backdrop-blur border border-slate-700/50 rounded-xl p-6 hover:border-purple-500/50 transition text-center"
+                >
+                  <div className="text-4xl mb-3">{feature.icon}</div>
+                  <h3 className="text-lg font-bold text-white mb-2">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm text-slate-400">{feature.desc}</p>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
+      {/* Courses Preview Section */}
+      <CoursesSection />
 
       {/* Footer */}
       {/* <Footer/> */}

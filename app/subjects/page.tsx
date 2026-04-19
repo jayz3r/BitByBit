@@ -1,76 +1,49 @@
-"use client";
-
 import Link from "next/link";
-import { useState } from "react";
+import SubjectsGrid from "../components/SubjectsGrid";
 
 export default function SubjectsPage() {
-  const subjects = [
-    {
-      id: "python",
-      name: "Python",
-      icon: "🐍",
-      description: "Learn Python programming from basics to advanced",
-      color: "bg-blue-500",
-    },
-    {
-      id: "ort",
-      name: "ORT",
-      icon: "🔧",
-      description: "Learn ORT fundamentals and best practices",
-      color: "bg-orange-500",
-    },
-    {
-      id: "math",
-      name: "Math",
-      icon: "📐",
-      description: "Master mathematical concepts and problem solving",
-      color: "bg-purple-500",
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-base-100 p-8">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen bg-linear-to-br from-slate-900 via-purple-900 to-slate-900 py-12 px-6">
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-3">Choose a Subject</h1>
-          <p className="text-xl text-gray-600">
-            Select a subject to start your learning journey
-          </p>
-        </div>
-
-        {/* Subject Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {subjects.map((subject) => (
-            <Link key={subject.id} href={`/learning-path?subject=${subject.id}`}>
-              <div className="card bg-base-200 shadow-xl hover:shadow-2xl transition-all hover:scale-105 cursor-pointer h-full">
-                <div className={`${subject.color} h-32 flex items-center justify-center`}>
-                  <span className="text-6xl">{subject.icon}</span>
-                </div>
-
-                <div className="card-body">
-                  <h2 className="card-title text-2xl">{subject.name}</h2>
-                  <p className="text-gray-700">{subject.description}</p>
-
-                  <div className="card-actions justify-end mt-4">
-                    <button className="btn btn-primary">
-                      Start Learning
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        {/* Back Button */}
-        <div className="mt-12 text-center">
+        <div className="text-center mb-16">
           <Link href="/">
-            <button className="btn btn-ghost">
+            <button className="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 backdrop-blur-sm text-slate-300 font-semibold transition">
               ← Back to Home
             </button>
           </Link>
+
+          <div className="space-y-4">
+            <h1 className="text-5xl lg:text-6xl font-bold text-white">
+              Choose Your Learning Path
+            </h1>
+            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+              Select a course and embark on your learning journey. Each course is carefully crafted to take you from beginner to expert.
+            </p>
+          </div>
+
+          {/* Quick Stats */}
+          <div className="mt-12 flex flex-wrap justify-center gap-8">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-6 py-3">
+              <p className="text-2xl font-bold text-purple-400">3</p>
+              <p className="text-sm text-slate-300">Courses</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-6 py-3">
+              <p className="text-2xl font-bold text-pink-400">63</p>
+              <p className="text-sm text-slate-300">Total Lessons</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-6 py-3">
+              <p className="text-2xl font-bold text-blue-400">36.5K</p>
+              <p className="text-sm text-slate-300">Active Learners</p>
+            </div>
+          </div>
         </div>
+
+        {/* Subjects Grid */}
+        <SubjectsGrid />
+
+        {/* Features Section */}
+        
       </div>
     </div>
   );
