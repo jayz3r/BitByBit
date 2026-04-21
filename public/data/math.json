@@ -36,10 +36,25 @@
       ]
     },
     {
+      "id": "math_solver_1",
+      "type": "interactive",
+      "title": "🎯 Practice: Solve x + 5 = 12",
+      "position": "left",
+      "problem": "x + 5 = 12",
+      "expectedSteps": 2,
+      "hints": [
+        "Think about what operation is being done to x (adding 5)",
+        "Do the opposite operation to isolate x",
+        "Subtract 5 from both sides"
+      ],
+      "solution": "x = 7",
+      "explanation": "To solve x + 5 = 12:\n1. Subtract 5 from both sides: x = 12 - 5\n2. Simplify: x = 7"
+    },
+    {
       "id": "math_lesson_1_part_3",
       "type": "lesson",
       "title": "Two-Step Equations",
-      "position": "left",
+      "position": "right",
       "content": "Introduction to Algebra - Part 3\n\nLet's combine what we learned!\n\n🔄 Two-Step Equations:\nThese need TWO operations to solve.\n\n📚 Example:\n2x + 3 = 11\n\nStep 1: Subtract 3 from both sides\n2x + 3 - 3 = 11 - 3\n2x = 8\n\nStep 2: Divide both sides by 2\nx = 8 ÷ 2\nx = 4\n\n💡 Remember: Always do addition/subtraction FIRST, then multiplication/division!",
       "examples": [
         {
@@ -49,10 +64,40 @@
       ]
     },
     {
+      "id": "math_solver_2",
+      "type": "interactive",
+      "title": "🎯 Practice: Solve 2x + 3 = 11",
+      "position": "left",
+      "problem": "2x + 3 = 11",
+      "expectedSteps": 2,
+      "hints": [
+        "First, deal with the addition/subtraction (subtract 3)",
+        "Then, deal with the multiplication (divide by 2)",
+        "Remember: PEMDAS in reverse!"
+      ],
+      "solution": "x = 4",
+      "explanation": "To solve 2x + 3 = 11:\n1. Subtract 3 from both sides: 2x = 8\n2. Divide by 2: x = 4"
+    },
+    {
+      "id": "math_solver_3",
+      "type": "interactive",
+      "title": "🎯 Practice: Solve 3x - 5 = 10",
+      "position": "right",
+      "problem": "3x - 5 = 10",
+      "expectedSteps": 2,
+      "hints": [
+        "Start by adding 5 to both sides",
+        "Then divide by 3",
+        "Your answer should be positive"
+      ],
+      "solution": "x = 5",
+      "explanation": "To solve 3x - 5 = 10:\n1. Add 5 to both sides: 3x = 15\n2. Divide by 3: x = 5"
+    },
+    {
       "id": "math_quiz_1",
       "type": "quiz",
       "title": "Algebra Basics Quiz",
-      "position": "right",
+      "position": "left",
       "questions": [
         {
           "question": "Solve: x + 3 = 8",
@@ -80,7 +125,7 @@
       "id": "math_lesson_2_part_1",
       "type": "lesson",
       "title": "Fractions in Equations",
-      "position": "left",
+      "position": "right",
       "content": "Linear Equations - Part 1\n\nWhat happens when we have fractions?\n\n🔢 Equations with Division:\nx/2 = 5\n\nTo solve, multiply both sides by 2:\n(x/2) × 2 = 5 × 2\nx = 10\n\n📚 Example:\nx/3 = 4\nMultiply both sides by 3:\nx = 4 × 3\nx = 12\n\n💡 Key: Division in equations → Multiply to solve!",
       "examples": [
         {
@@ -94,10 +139,25 @@
       ]
     },
     {
+      "id": "math_solver_4",
+      "type": "interactive",
+      "title": "🎯 Practice: Solve x/2 = 5",
+      "position": "right",
+      "problem": "x/2 = 5",
+      "expectedSteps": 1,
+      "hints": [
+        "x is being divided by 2",
+        "Do the opposite: multiply both sides by 2",
+        "x = 5 × 2"
+      ],
+      "solution": "x = 10",
+      "explanation": "To solve x/2 = 5:\n1. Multiply both sides by 2: x = 5 × 2\n2. Simplify: x = 10"
+    },
+    {
       "id": "math_lesson_2_part_2",
       "type": "lesson",
       "title": "Distributive Property",
-      "position": "right",
+      "position": "left",
       "content": "Linear Equations - Part 2\n\nUsing the Distributive Property:\n\n🎯 The Rule:\na(b + c) = ab + ac\n\n📚 Example:\n2(x + 3) = 10\n\nStep 1: Distribute (multiply 2 by each term)\n2×x + 2×3 = 10\n2x + 6 = 10\n\nStep 2: Subtract 6 from both sides\n2x = 4\n\nStep 3: Divide by 2\nx = 2\n\n💡 Always distribute FIRST, then solve!",
       "examples": [
         {
@@ -111,10 +171,41 @@
       ]
     },
     {
+      "id": "math_solver_5",
+      "type": "interactive",
+      "title": "🎯 Practice: Solve 2(x + 3) = 10",
+      "position": "right",
+      "problem": "2(x + 3) = 10",
+      "expectedSteps": 3,
+      "hints": [
+        "First, distribute: multiply 2 by both terms in the parentheses",
+        "This gives you: 2x + 6 = 10",
+        "Now subtract 6 from both sides",
+        "Finally, divide by 2"
+      ],
+      "solution": "x = 2",
+      "explanation": "To solve 2(x + 3) = 10:\n1. Distribute: 2x + 6 = 10\n2. Subtract 6: 2x = 4\n3. Divide by 2: x = 2"
+    },
+    {
+      "id": "math_solver_6",
+      "type": "interactive",
+      "title": "🎯 Practice: Solve 3(x - 1) = 12",
+      "position": "left",
+      "problem": "3(x - 1) = 12",
+      "expectedSteps": 3,
+      "hints": [
+        "Distribute the 3: 3x - 3 = 12",
+        "Add 3 to both sides",
+        "Divide by 3"
+      ],
+      "solution": "x = 5",
+      "explanation": "To solve 3(x - 1) = 12:\n1. Distribute: 3x - 3 = 12\n2. Add 3: 3x = 15\n3. Divide by 3: x = 5"
+    },
+    {
       "id": "math_lesson_2_part_3",
       "type": "lesson",
       "title": "Multi-Step Equations",
-      "position": "left",
+      "position": "right",
       "content": "Linear Equations - Part 3\n\nCombining everything we learned!\n\n🔄 Complex Equations:\nSometimes we need ALL the steps!\n\n📚 Example:\n2(x + 3) - 4 = 10\n\nStep 1: Distribute\n2x + 6 - 4 = 10\n\nStep 2: Simplify\n2x + 2 = 10\n\nStep 3: Subtract 2\n2x = 8\n\nStep 4: Divide by 2\nx = 4\n\n💡 Remember: Distribute → Simplify → Solve!",
       "examples": [
         {
@@ -122,6 +213,22 @@
           "solution": "x = 3\n\nStep 1: Distribute: 3x + 3 + 2 = 14\nStep 2: Simplify: 3x + 5 = 14\nStep 3: Subtract 5: 3x = 9\nStep 4: Divide by 3: x = 3"
         }
       ]
+    },
+    {
+      "id": "math_solver_7",
+      "type": "interactive",
+      "title": "🎯 Challenge: Solve 2(x + 3) - 4 = 10",
+      "position": "left",
+      "problem": "2(x + 3) - 4 = 10",
+      "expectedSteps": 4,
+      "hints": [
+        "Distribute: 2x + 6 - 4 = 10",
+        "Simplify: 2x + 2 = 10",
+        "Subtract 2: 2x = 8",
+        "Divide by 2: x = 4"
+      ],
+      "solution": "x = 4",
+      "explanation": "To solve 2(x + 3) - 4 = 10:\n1. Distribute: 2x + 6 - 4 = 10\n2. Simplify: 2x + 2 = 10\n3. Subtract 2: 2x = 8\n4. Divide by 2: x = 4"
     },
     {
       "id": "math_quiz_2",
@@ -152,80 +259,18 @@
       ]
     },
     {
-      "id": "math_lesson_3_part_1",
-      "type": "lesson",
-      "title": "Introduction to Systems",
-      "position": "left",
-      "content": "Systems of Equations - Part 1\n\nWhat is a System of Equations?\nA system is TWO or more equations with the same variables.\n\n📚 Example System:\nx + y = 10    (Equation 1)\nx - y = 2     (Equation 2)\n\nWe need to find values for x and y that work in BOTH equations!\n\n🎯 Two Methods to Solve:\n1. Addition/Elimination Method\n2. Substitution Method\n\n💡 Today: Let's learn the Addition Method!",
-      "examples": [
-        {
-          "question": "If x + y = 10 and x = 6, what is y?",
-          "solution": "y = 4\n\nSubstitute x = 6 into the first equation:\n6 + y = 10\ny = 10 - 6\ny = 4"
-        }
-      ]
-    },
-    {
-      "id": "math_lesson_3_part_2",
-      "type": "lesson",
-      "title": "Elimination Method",
-      "position": "right",
-      "content": "Systems of Equations - Part 2\n\nThe Elimination (Addition) Method:\n\n🎯 Goal: Make one variable cancel out!\n\n📚 Example:\nx + y = 10\nx - y = 2\n\nStep 1: Add the equations\n(x + y) + (x - y) = 10 + 2\n2x = 12\n\nStep 2: Solve for x\nx = 6\n\nStep 3: Substitute back to find y\n6 + y = 10\ny = 4\n\n✅ Solution: x = 6, y = 4\n\n💡 Notice: The y terms canceled out!",
-      "examples": [
-        {
-          "question": "Solve the system:\n2x + y = 7\nx - y = 2",
-          "solution": "x = 3, y = 1\n\nStep 1: Add equations\n(2x + y) + (x - y) = 7 + 2\n3x = 9\nx = 3\n\nStep 2: Substitute\n3 - y = 2\ny = 1"
-        }
-      ]
-    },
-    {
-      "id": "math_lesson_3_part_3",
-      "type": "lesson",
-      "title": "Substitution Method",
-      "position": "left",
-      "content": "Systems of Equations - Part 3\n\nThe Substitution Method:\n\n🎯 Goal: Solve one equation, then substitute!\n\n📚 Example:\ny = 2x + 1       (Already solved for y)\n3x + y = 11      (Second equation)\n\nStep 1: Substitute y in the second equation\n3x + (2x + 1) = 11\n5x + 1 = 11\n\nStep 2: Solve for x\n5x = 10\nx = 2\n\nStep 3: Find y\ny = 2(2) + 1 = 5\n\n✅ Solution: x = 2, y = 5\n\n💡 Use this when one equation is already solved!",
-      "examples": [
-        {
-          "question": "Solve:\ny = x + 1\n2x + y = 10",
-          "solution": "x = 3, y = 4\n\nStep 1: Substitute y = x + 1 into second equation\n2x + (x + 1) = 10\n3x + 1 = 10\n3x = 9\nx = 3\n\nStep 2: Find y\ny = 3 + 1 = 4"
-        }
-      ]
-    },
-    {
-      "id": "math_quiz_3",
-      "type": "quiz",
-      "title": "Systems of Equations Quiz",
-      "position": "right",
-      "questions": [
-        {
-          "question": "Solve:\nx + y = 8\nx - y = 2\n\nWhat is x?",
-          "options": ["3", "5", "6", "10"],
-          "answer": "5"
-        },
-        {
-          "question": "If x = 2 and x + y = 7, what is y?",
-          "options": ["2", "5", "7", "9"],
-          "answer": "5"
-        },
-        {
-          "question": "Solve:\n2x + y = 9\nx - y = 3\n\nWhat is x?",
-          "options": ["2", "3", "4", "6"],
-          "answer": "4"
-        }
-      ]
-    },
-    {
       "id": "math_chest_1",
       "type": "chest",
       "title": "Advanced Challenge",
       "position": "left",
-      "content": "🎁 Bonus: Advanced Problem Sets\n\nYou've unlocked bonus challenging problems!\n\n🌟 Try these advanced equations:\n\n1. 2(3x - 1) = 5(x + 2)\n2. (x + 2)/3 = (x - 1)/2\n3. Solve the system:\n   3x + 2y = 12\n   2x - y = 5"
+      "content": "🎁 Bonus: Advanced Problem Sets\n\nYou've unlocked bonus challenging problems!\n\n🌟 Try these advanced equations:\n\n1. 2(3x - 1) = 5(x + 2)\n2. (x + 2)/3 = (x - 1)/2\n3. 4x + 2(x - 1) = 3x + 8"
     },
     {
       "id": "math_final",
       "type": "trophy",
       "title": "Course Complete!",
       "position": "right",
-      "content": "🏆 Congratulations! You've completed the Math course!\n\n✅ You've mastered:\n• Variables and Constants\n• Basic Equations\n• Two-Step Equations\n• Fractions in Equations\n• Distributive Property\n• Multi-Step Equations\n• Systems of Equations\n• Elimination Method\n• Substitution Method\n\n🎉 You're now ready for advanced algebra!\n\n💪 Keep practicing and challenging yourself!"
+      "content": "🏆 Congratulations! You've completed the Math course!\n\n✅ You've mastered:\n• Variables and Constants\n• Basic Equations\n• Two-Step Equations\n• Fractions in Equations\n• Distributive Property\n• Multi-Step Equations\n• Interactive Equation Solving\n\n🎉 You're now ready for advanced algebra!\n\n💪 Keep practicing and challenging yourself!"
     }
   ]
 }

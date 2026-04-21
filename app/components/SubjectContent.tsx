@@ -347,7 +347,7 @@ export default function SubjectContent({ subject }: { subject: string | undefine
                 Congratulations on completing this incredible learning journey! You've shown dedication and skill. Ready for the next challenge?
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/subjects" className="flex-1">
+                <Link href="/courses" className="flex-1">
                   <button className="w-full px-8 py-4 rounded-2xl bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white font-bold hover:shadow-2xl transition transform hover:scale-105 shadow-xl">
                     Explore More Courses →
                   </button>

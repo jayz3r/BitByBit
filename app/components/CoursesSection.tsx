@@ -101,7 +101,7 @@ export default function CoursesSection() {
           <p className="text-slate-300 mb-6">
             Not sure where to start? All courses are designed for learners of all levels
           </p>
-          <Link href="/subjects">
+          <Link href="/courses">
             <button className="px-8 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold hover:shadow-lg hover:shadow-purple-500/50 transition transform hover:scale-105">
               View All Courses →
             </button>

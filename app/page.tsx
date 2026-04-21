@@ -52,7 +52,7 @@ export default function Home() {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/subjects" className="flex-1">
+                <Link href="/courses" className="flex-1">
                   <button className="w-full px-8 py-4 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition transform hover:scale-105">
                     Start Learning Now
                   </button>

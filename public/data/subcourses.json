@@ -1,0 +1,124 @@
+{
+  "courses": [
+    {
+      "id": "math",
+      "name": "Mathematics",
+      "icon": "📐",
+      "color": "from-blue-400 to-blue-600",
+      "description": "Master algebra, geometry, and advanced math concepts",
+      "subCourses": [
+        {
+          "id": "pre-algebra",
+          "name": "Pre-Algebra",
+          "icon": "🔢",
+          "lessons": 15,
+          "difficulty": "Beginner"
+        },
+        {
+          "id": "algebra-1",
+          "name": "Algebra 1",
+          "icon": "📊",
+          "lessons": 25,
+          "difficulty": "Intermediate"
+        },
+        {
+          "id": "geometry",
+          "name": "Geometry",
+          "icon": "🔷",
+          "lessons": 20,
+          "difficulty": "Intermediate"
+        }
+      ]
+    },
+    {
+      "id": "programming",
+      "name": "Programming",
+      "icon": "💻",
+      "color": "from-purple-400 to-purple-600",
+      "description": "Learn Python, JavaScript, and Web Development",
+      "subCourses": [
+        {
+          "id": "python-basics",
+          "name": "Python Basics",
+          "icon": "🐍",
+          "lessons": 20,
+          "difficulty": "Beginner"
+        },
+        {
+          "id": "javascript",
+          "name": "JavaScript",
+          "icon": "⚡",
+          "lessons": 25,
+          "difficulty": "Intermediate"
+        },
+        {
+          "id": "web-dev",
+          "name": "Web Development",
+          "icon": "🌐",
+          "lessons": 30,
+          "difficulty": "Advanced"
+        }
+      ]
+    },
+    {
+      "id": "science",
+      "name": "Science",
+      "icon": "🧪",
+      "color": "from-green-400 to-green-600",
+      "description": "Explore physics, chemistry, and biology",
+      "subCourses": [
+        {
+          "id": "physics",
+          "name": "Physics",
+          "icon": "⚛️",
+          "lessons": 22,
+          "difficulty": "Intermediate"
+        },
+        {
+          "id": "chemistry",
+          "name": "Chemistry",
+          "icon": "🧫",
+          "lessons": 18,
+          "difficulty": "Intermediate"
+        },
+        {
+          "id": "biology",
+          "name": "Biology",
+          "icon": "🧬",
+          "lessons": 20,
+          "difficulty": "Beginner"
+        }
+      ]
+    },
+    {
+      "id": "Tests",
+      "name": "Tests",
+      "icon": "📝",
+      "color": "from-pink-400 to-pink-600",
+      "description": "Prepare for standardized tests and exams",
+      "subCourses": [
+        {
+          "id": "ort",
+          "name": "ORT",
+          "icon": "🔧",
+          "lessons": 25,
+          "difficulty": "Beginner"
+        },
+        {
+          "id": "ielts",
+          "name": "IELTS",
+          "icon": "🌍",
+          "lessons": 25,
+          "difficulty": "Beginner"
+        },
+        {
+          "id": "sat",
+          "name": "SAT",
+          "icon": "📚",
+          "lessons": 20,
+          "difficulty": "Intermediate"
+        }
+      ]
+    }
+  ]
+}

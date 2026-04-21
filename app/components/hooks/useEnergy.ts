@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
 const DAILY_ENERGY = 30;
@@ -16,9 +18,12 @@ export function useEnergy() {
     max: DAILY_ENERGY,
     lastReset: new Date().toISOString().split("T")[0],
   });
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    // Load energy from localStorage
+    setIsMounted(true);
+    
+    // Load energy from localStorage (client-side only)
     const stored = localStorage.getItem("userEnergy");
     if (stored) {
       const data = JSON.parse(stored);
@@ -44,10 +49,11 @@ export function useEnergy() {
         lastReset: today,
       };
       localStorage.setItem("userEnergy", JSON.stringify(newData));
+      setEnergy(newData);
     }
   }, []);
 
-  const useEnergy = (amount: number = ENERGY_PER_LESSON) => {
+  const useEnergyAmount = (amount: number = ENERGY_PER_LESSON) => {
     const newRemaining = Math.max(0, energy.remaining - amount);
     const newData = {
       ...energy,
@@ -62,13 +68,14 @@ export function useEnergy() {
     return energy.remaining >= amount;
   };
 
-  const isPremium = localStorage.getItem("isPremium") === "true";
+  const isPremium = isMounted ? localStorage.getItem("isPremium") === "true" : false;
 
   return {
     energy: energy.remaining,
     maxEnergy: energy.max,
-    useEnergy,
+    useEnergy: useEnergyAmount,
     hasEnough,
     isPremium,
+    isMounted,
   };
 }

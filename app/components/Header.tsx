@@ -46,9 +46,9 @@ const Header = () => {
               Home
             </Link>
             <Link
-              href="/subjects"
+              href="/courses"
               className={`transition ${
-                isActive("/subjects")
+                isActive("/coursess")
                   ? "text-purple-400 font-semibold"
                   : "text-slate-300 hover:text-white"
               }`}
@@ -214,7 +214,7 @@ const Header = () => {
               Home
             </Link>
             <Link
-              href="/subjects"
+              href="/courses"
               className="block px-4 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/50 transition"
             >
               Learn
