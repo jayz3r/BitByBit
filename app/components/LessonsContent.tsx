@@ -242,6 +242,14 @@ export default function LessonContent({
               >
                 🧑‍🏫 Help
               </button>
+
+              {/* Floating button for mobile */}
+              <button
+                onClick={() => setIsTutorOpen(true)}
+                className="sm:hidden fixed bottom-6 right-6 z-30 w-14 h-14 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-2xl flex items-center justify-center text-2xl hover:scale-110 transition-transform"
+              >
+                🧑‍🏫
+              </button>
             </div>
           </div>
 
