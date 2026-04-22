@@ -34,7 +34,7 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex gap-8 items-center">
+          <nav className="hidden lg:flex gap-8 items-center">
             <Link
               href="/"
               className={`transition ${
@@ -183,7 +183,7 @@ const Header = () => {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden btn btn-ghost btn-circle"
+              className="lg:hidden btn btn-ghost btn-circle"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <svg

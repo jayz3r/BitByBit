@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import PythonInterpreter from "./PythonInterpreter";
+import CodeBlock from "./CodeBlock";
 
 function LessonLayout({
   lesson,
@@ -18,6 +20,7 @@ function LessonLayout({
 
   const [isCompleted, setIsCompleted] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [showInterpreter, setShowInterpreter] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
@@ -64,6 +67,24 @@ function LessonLayout({
         </div>
       </div>
 
+      {/* Code Examples Section */}
+      {lesson.codeExamples && lesson.codeExamples.length > 0 && (
+        <div className="space-y-4">
+          <h2 className="text-2xl font-bold text-slate-800">💻 Code Examples</h2>
+          <div className="space-y-4">
+            {lesson.codeExamples.map((codeExample: any, i: number) => (
+              <CodeBlock
+                key={i}
+                filePath={codeExample.filePath || `example-${i + 1}.py`}
+                title={codeExample.title}
+                code={codeExample.code}
+                language={codeExample.language || "python"}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Examples Section */}
       {lesson.examples && lesson.examples.length > 0 && (
         <div className="space-y-4">
@@ -87,6 +108,20 @@ function LessonLayout({
               </details>
             ))}
           </div>
+        </div>
+      )}
+
+      {/* Python Interpreter - Show for Python lessons */}
+      {subject === "python" && (
+        <div className="space-y-4">
+          <button
+            onClick={() => setShowInterpreter(!showInterpreter)}
+            className="w-full px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold hover:shadow-lg transition flex items-center justify-center gap-2"
+          >
+            {showInterpreter ? "Hide Python Interpreter" : "Open Python Interpreter 🐍"}
+          </button>
+
+          {showInterpreter && <PythonInterpreter />}
         </div>
       )}
 

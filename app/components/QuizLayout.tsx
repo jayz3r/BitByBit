@@ -13,13 +13,15 @@ interface QuizQuestion {
 export default function QuizLayout({
   quiz,
   subject,
+  onComplete,
 }: {
   quiz: any;
   subject: string;
+  onComplete: () => void;
 }) {
   const router = useRouter();
   const { useEnergy: consumeEnergy, isPremium } = useEnergy();
-  
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [answered, setAnswered] = useState(false);
@@ -27,7 +29,7 @@ export default function QuizLayout({
   const [isFinished, setIsFinished] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [correctAnswers, setCorrectAnswers] = useState(0);
-  
+
   const [questionQueue, setQuestionQueue] = useState<QuizQuestion[]>([]);
   const [wrongQuestions, setWrongQuestions] = useState<QuizQuestion[]>([]);
   const [isRetrying, setIsRetrying] = useState(false);
@@ -62,19 +64,14 @@ export default function QuizLayout({
       setCorrectAnswers(correctAnswers + 1);
       setScore(score + 10);
     } else {
-      // Deduct 3 hearts for wrong answer (both learning and review phase)
       if (!isPremium) {
         consumeEnergy(3);
       }
-      
-      // Only add to wrong questions if in learning phase, not review
       if (!isRetrying) {
         setWrongQuestions([...wrongQuestions, currentQuestion]);
       } else {
-        // In review phase, count how many times we got it wrong
         setReviewWrongCount(reviewWrongCount + 1);
       }
-      
       setShowWrongAnswerPenalty(true);
     }
   };
@@ -87,7 +84,6 @@ export default function QuizLayout({
       setSelectedOption(null);
       setAnswered(false);
     } else if (!isRetrying && wrongQuestions.length > 0) {
-      // Start retry phase with wrong questions
       setIsRetrying(true);
       setQuestionQueue(wrongQuestions);
       setCurrentIndex(0);
@@ -96,16 +92,12 @@ export default function QuizLayout({
       setAnswered(false);
       setReviewWrongCount(0);
     } else {
-      // Mark quiz as complete
-      const completed = JSON.parse(
-        localStorage.getItem(`completed_lessons_${subject}`) || "[]"
-      );
+      // Save completion to localStorage
+      const key = `completed_lessons_${subject}`;
+      const completed = JSON.parse(localStorage.getItem(key) || "[]");
       if (!completed.includes(quiz.id)) {
         completed.push(quiz.id);
-        localStorage.setItem(
-          `completed_lessons_${subject}`,
-          JSON.stringify(completed)
-        );
+        localStorage.setItem(key, JSON.stringify(completed));
       }
       setIsFinished(true);
     }
@@ -135,41 +127,25 @@ export default function QuizLayout({
 
     return (
       <div className="space-y-8 text-center py-12">
-        {/* Trophy Animation */}
-        <div
-          className="text-8xl animate-bounce"
-          style={{ animationDuration: "1s" }}
-        >
+        <div className="text-8xl animate-bounce" style={{ animationDuration: "1s" }}>
           {isPerfect ? "🏆" : "🎉"}
         </div>
 
-        {/* Completion Message */}
         <div className="space-y-4">
           <h2 className="text-4xl font-black text-slate-800">
-            {isPerfect
-              ? "Perfect Score!"
-              : finalPercentage >= 80
-                ? "Great Job!"
-                : "Good Effort!"}
+            {isPerfect ? "Perfect Score!" : finalPercentage >= 80 ? "Great Job!" : "Good Effort!"}
           </h2>
-
           <p className="text-2xl font-bold text-slate-700">
             Your Score:{" "}
             <span className="text-green-600">
               {correctAnswers} / {quiz.questions?.length}
             </span>
           </p>
-
-          <p className="text-lg text-slate-600">
-            {finalPercentage}% Success Rate
-          </p>
+          <p className="text-lg text-slate-600">{finalPercentage}% Success Rate</p>
         </div>
 
-        {/* Streak Info */}
         <div className="bg-gradient-to-r from-amber-100 to-orange-100 rounded-2xl p-6 border-2 border-amber-300 max-w-md mx-auto">
-          <p className="text-sm text-amber-800 font-semibold uppercase mb-2">
-            📊 Quiz Stats
-          </p>
+          <p className="text-sm text-amber-800 font-semibold uppercase mb-2">📊 Quiz Stats</p>
           <div className="grid grid-cols-2 gap-4 text-center">
             <div>
               <p className="text-2xl font-bold text-amber-700">{correctAnswers}</p>
@@ -184,37 +160,33 @@ export default function QuizLayout({
           </div>
         </div>
 
-        {/* Progress Bar */}
         <div className="max-w-xs mx-auto">
           <div className="h-4 bg-slate-200 rounded-full overflow-hidden">
             <div
               className="h-full bg-gradient-to-r from-green-400 to-emerald-500 transition-all duration-500"
-              style={{
-                width: `${finalPercentage}%`,
-              }}
+              style={{ width: `${finalPercentage}%` }}
             ></div>
           </div>
         </div>
 
-        {/* Motivational Message */}
         <div className="text-slate-600 italic">
           {isPerfect
             ? "You're a quiz master! Keep it up! 🌟"
             : finalPercentage >= 80
-              ? "Almost there! You're doing great! 💪"
-              : "Keep practicing, you'll get better! 📚"}
+            ? "Almost there! You're doing great! 💪"
+            : "Keep practicing, you'll get better! 📚"}
         </div>
 
-        {/* Actions */}
+        {/* ✅ Fixed: Continue calls onComplete to go to next lesson */}
         <div className="flex flex-col sm:flex-row gap-4 pt-8 max-w-md mx-auto">
           <button
-            onClick={() => router.back()}
+            onClick={handleRetry}
             className="flex-1 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-400 to-cyan-400 text-white font-bold hover:shadow-lg transition"
           >
-            ← Back
+            🔄 Retry
           </button>
           <button
-            onClick={() => router.push(`/subjects/${subject}`)}
+            onClick={onComplete}
             className="flex-1 px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold hover:shadow-lg transition"
           >
             Continue →
@@ -224,59 +196,15 @@ export default function QuizLayout({
     );
   }
 
-  if (isFinished && correctAnswers === 0) {
-    return (
-      <div className="space-y-8 text-center py-12">
-        <div className="text-7xl">😅</div>
-
-        <div className="space-y-4">
-          <h2 className="text-4xl font-black text-slate-800">
-            Don't Give Up!
-          </h2>
-          <p className="text-xl text-slate-600">
-            Let's try again. You'll do better this time! 💪
-          </p>
-        </div>
-
-        <div className="bg-gradient-to-r from-orange-100 to-red-100 rounded-2xl p-6 border-2 border-orange-300 max-w-md mx-auto">
-          <p className="text-sm text-orange-800 font-semibold uppercase mb-2">
-            ⚠️ Need Help?
-          </p>
-          <p className="text-slate-700">
-            Review the lesson again before retrying, or try the next question and come back later.
-          </p>
-        </div>
-
-        <div className="flex flex-col sm:flex-row gap-4 pt-8 max-w-md mx-auto">
-          <button
-            onClick={handleRetry}
-            className="flex-1 px-6 py-4 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold hover:shadow-lg transition transform hover:scale-105"
-          >
-            🔄 Retry Quiz
-          </button>
-          <button
-            onClick={() => router.push(`/subjects/${subject}`)}
-            className="flex-1 px-6 py-4 rounded-xl bg-gradient-to-r from-slate-400 to-slate-500 text-white font-bold hover:shadow-lg transition"
-          >
-            Review Lesson
-          </button>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="space-y-8">
-      {/* Header */}
       <div className="space-y-4">
-        {/* Phase Indicator */}
         <div className="flex items-center justify-center gap-2 mb-2">
           <p className="text-xs font-bold text-slate-600 uppercase">
             {isRetrying ? "🔄 Review Phase" : "📚 Learning Phase"}
           </p>
         </div>
 
-        {/* Progress Bar */}
         <div className="w-full h-3 bg-slate-200 rounded-full overflow-hidden border-2 border-slate-300">
           <div
             className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transition-all duration-500"
@@ -284,7 +212,6 @@ export default function QuizLayout({
           ></div>
         </div>
 
-        {/* Question Counter */}
         <div className="flex justify-between items-center px-2">
           <span className="text-sm font-bold text-slate-700">
             Question {currentIndex + 1} of {questionQueue.length}
@@ -295,7 +222,6 @@ export default function QuizLayout({
         </div>
       </div>
 
-      {/* Question */}
       <div className="space-y-6">
         <div className="space-y-3">
           <p className="text-sm font-semibold text-slate-600 uppercase tracking-wide">
@@ -306,14 +232,12 @@ export default function QuizLayout({
           </h2>
         </div>
 
-        {/* Options */}
         <div className="grid grid-cols-2 gap-4">
           {currentQuestion?.options?.map((option: string, idx: number) => {
             const isSelected = selectedOption === option;
             const isAnswerCorrect = option === currentQuestion.answer;
             const showCorrect = answered && isAnswerCorrect;
-            const showIncorrect =
-              answered && isSelected && !isAnswerCorrect;
+            const showIncorrect = answered && isSelected && !isAnswerCorrect;
 
             return (
               <button
@@ -324,10 +248,10 @@ export default function QuizLayout({
                   showCorrect
                     ? "bg-gradient-to-br from-green-300 to-green-400 border-green-600 text-white shadow-lg scale-105"
                     : showIncorrect
-                      ? "bg-gradient-to-br from-red-300 to-red-400 border-red-600 text-white shadow-lg"
-                      : isSelected && !answered
-                        ? "bg-gradient-to-br from-blue-400 to-blue-500 border-blue-600 text-white shadow-lg"
-                        : "bg-white border-slate-300 text-slate-800 hover:bg-slate-50"
+                    ? "bg-gradient-to-br from-red-300 to-red-400 border-red-600 text-white shadow-lg"
+                    : isSelected && !answered
+                    ? "bg-gradient-to-br from-blue-400 to-blue-500 border-blue-600 text-white shadow-lg"
+                    : "bg-white border-slate-300 text-slate-800 hover:bg-slate-50"
                 } ${answered ? "cursor-default" : "cursor-pointer hover:scale-105"}`}
               >
                 <div className="flex items-center justify-center gap-2">
@@ -340,7 +264,6 @@ export default function QuizLayout({
           })}
         </div>
 
-        {/* Feedback */}
         {answered && (
           <div
             className={`p-6 rounded-2xl text-center font-semibold text-lg ${
@@ -373,7 +296,6 @@ export default function QuizLayout({
         )}
       </div>
 
-      {/* Action Buttons */}
       <div className="flex gap-4 pt-6">
         {!answered ? (
           <button
@@ -397,13 +319,12 @@ export default function QuizLayout({
                 ? "Finish Review →"
                 : "Next →"
               : currentIndex === questionQueue.length - 1 && wrongQuestions.length === 0
-                ? "Finish Quiz →"
-                : "Next →"}
+              ? "Finish Quiz →"
+              : "Next →"}
           </button>
         )}
       </div>
 
-      {/* Live Score */}
       <div className="flex justify-between items-center pt-4 border-t-2 border-slate-200">
         <div className="text-sm font-bold text-slate-700">
           Score: <span className="text-green-600">{score}</span>
@@ -421,7 +342,6 @@ export default function QuizLayout({
         )}
       </div>
 
-      {/* Wrong Answer Penalty Modal */}
       {showWrongAnswerPenalty && !isCorrect && answered && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 pointer-events-auto">
           <div className="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl animate-bounce">

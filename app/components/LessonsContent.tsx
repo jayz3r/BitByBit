@@ -8,6 +8,7 @@ import EquationSolver from "./EquationSolver";
 import EnergyBar from "./EnergyBar";
 import AiTutor from "./AiTutor";
 import { useEnergy } from "./hooks/useEnergy";
+import PythonInterpreter from "./PythonInterpreter";
 
 interface LessonPart {
   id: string;
@@ -32,7 +33,13 @@ export default function LessonContent({
   const subCourseId = searchParams.get("subcourse") || "pre-algebra";
   const onComplete = searchParams.get("onComplete");
 
-  const { useEnergy: consumeEnergy, hasEnough, isPremium, energy, isMounted: energyMounted } = useEnergy();
+  const {
+    useEnergy: consumeEnergy,
+    hasEnough,
+    isPremium,
+    energy,
+    isMounted: energyMounted,
+  } = useEnergy();
 
   const [content, setContent] = useState<LessonPart | null>(null);
   const [allLessons, setAllLessons] = useState<LessonPart[]>([]);
@@ -87,9 +94,7 @@ export default function LessonContent({
     const loadContent = async () => {
       try {
         // Try new naming convention first
-        let response = await fetch(
-          `/data/${courseId}-${subCourseId}.json`
-        );
+        let response = await fetch(`/data/${courseId}-${subCourseId}.json`);
 
         // Fallback to old naming for compatibility
         if (!response.ok) {
@@ -104,7 +109,7 @@ export default function LessonContent({
           setAllLessons(courseData.path || []);
 
           const foundContent = courseData.path?.find(
-            (item: any) => item.id === lessonId
+            (item: any) => item.id === lessonId,
           );
 
           if (foundContent) {
@@ -112,7 +117,7 @@ export default function LessonContent({
             setType(foundContent.type);
 
             const index = courseData.path.findIndex(
-              (item: any) => item.id === lessonId
+              (item: any) => item.id === lessonId,
             );
             setCurrentIndex(index);
           }
@@ -159,7 +164,7 @@ export default function LessonContent({
     if (currentIndex < allLessons.length - 1) {
       const nextLesson = allLessons[currentIndex + 1];
       router.push(
-        `/lessons/${nextLesson.id}?course=${courseId}&subcourse=${subCourseId}&onComplete=${nextLesson.id}`
+        `/lessons/${nextLesson.id}?course=${courseId}&subcourse=${subCourseId}&onComplete=${nextLesson.id}`,
       );
     } else {
       router.push(`/learn/${courseId}/${subCourseId}`);
@@ -170,7 +175,7 @@ export default function LessonContent({
     if (currentIndex > 0) {
       const prevLesson = allLessons[currentIndex - 1];
       router.push(
-        `/lessons/${prevLesson.id}?course=${courseId}&subcourse=${subCourseId}&onComplete=${prevLesson.id}`
+        `/lessons/${prevLesson.id}?course=${courseId}&subcourse=${subCourseId}&onComplete=${prevLesson.id}`,
       );
     }
   };
@@ -259,11 +264,15 @@ export default function LessonContent({
           </div>
 
           {type === "interactive" ? (
-            <EquationSolver
-              problem={content.problem || ""}
-              expectedSteps={content.expectedSteps || 3}
-              hints={content.hints || []}
-            />
+            courseId === "programming" ? (
+              <PythonInterpreter />
+            ) : (
+              <EquationSolver
+                problem={content.problem || ""}
+                expectedSteps={content.expectedSteps || 3}
+                hints={content.hints || []}
+              />
+            )
           ) : type === "quiz" ? (
             <QuizLayout
               quiz={{
@@ -272,6 +281,7 @@ export default function LessonContent({
                 questions: content.questions,
               }}
               subject={courseId}
+              onComplete={handleNext}
             />
           ) : (
             <LessonLayout

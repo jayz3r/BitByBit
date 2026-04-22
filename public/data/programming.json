@@ -1,0 +1,467 @@
+{
+  "subject": "python",
+  "path": [
+    {
+      "id": "python_lesson_1_part_1",
+      "type": "lesson",
+      "title": "What is Python?",
+      "position": "left",
+      "content": "Introduction to Python - Part 1\n\nWelcome to Python Programming!\n\n🐍 What is Python?\nPython is a simple, powerful programming language used for:\n• Web development\n• Data science\n• Artificial intelligence\n• Automation\n• Game development\n\n💻 Why Python?\n✓ Easy to learn - Simple, readable syntax\n✓ Popular - Used by millions of developers\n✓ Versatile - Works for many projects\n✓ In-demand - Great career opportunities\n\n🎯 Our Goal:\nLearn Python basics and become a confident programmer!",
+      "examples": [
+        {
+          "question": "What is Python used for?",
+          "solution": "Python is used for:\n• Web development (Django, Flask)\n• Data science (Pandas, NumPy)\n• AI/Machine Learning (TensorFlow)\n• Automation scripts\n• Game development"
+        },
+        {
+          "question": "Why should I learn Python?",
+          "solution": "Python is:\n✓ Beginner-friendly\n✓ Highly in-demand in tech jobs\n✓ Used by major companies (Google, Netflix, Spotify)\n✓ Great for building real projects\n✓ Has huge community support"
+        }
+      ]
+    },
+    {
+      "id": "python_lesson_1_part_2",
+      "type": "lesson",
+      "title": "Your First Program",
+      "position": "right",
+      "content": "Introduction to Python - Part 2\n\nLet's write our first Python program!\n\n📝 Hello World:\nprint(\"Hello, World!\")\n\nOutput:\nHello, World!\n\n🎯 What happened?\n• print() is a function\n• It displays text to the screen\n• The text goes inside quotes\n\n💡 Remember:\n• Python reads top to bottom\n• Indentation matters in Python\n• Be careful with spelling!",
+      "examples": [
+        {
+          "question": "How do I display text in Python?",
+          "solution": "Use the print() function:\nprint(\"Your text here\")\n\nExample:\nprint(\"Welcome to Python!\")\n\nOutput:\nWelcome to Python!"
+        }
+      ]
+    },
+    {
+      "id": "python_quiz_1",
+      "type": "quiz",
+      "title": "Python Basics Introduction",
+      "position": "left",
+      "questions": [
+        {
+          "question": "What does print() do in Python?",
+          "options": ["Prints to paper", "Displays text on screen", "Saves data", "Deletes text"],
+          "answer": "Displays text on screen"
+        },
+        {
+          "question": "Which is a valid Python print statement?",
+          "options": ["print Hello", "print(Hello)", "print(\"Hello\")", "display(Hello)"],
+          "answer": "print(\"Hello\")"
+        },
+        {
+          "question": "What will this code output?\nprint(\"Python\")",
+          "options": ["print(\"Python\")", "Python", "\"Python\"", "python"],
+          "answer": "Python"
+        },
+        {
+          "question": "Is Python easy to learn?",
+          "options": ["No", "Yes, very easy", "Only for experts", "Maybe"],
+          "answer": "Yes, very easy"
+        },
+        {
+          "question": "What company did NOT use Python?",
+          "options": ["Google", "Netflix", "Facebook", "None - all use it"],
+          "answer": "None - all use it"
+        },
+        {
+          "question": "What should you use to display text?",
+          "options": ["display()", "show()", "print()", "echo()"],
+          "answer": "print()"
+        },
+        {
+          "question": "What does this show?\nprint(\"Code\")",
+          "options": ["Code", "\"Code\"", "print", "(\"Code\")"],
+          "answer": "Code"
+        },
+        {
+          "question": "What do quotes do in print?",
+          "options": ["Nothing", "Mark the text to display", "Create comments", "Start functions"],
+          "answer": "Mark the text to display"
+        }
+      ]
+    },
+    {
+      "id": "python_lesson_2_part_1",
+      "type": "lesson",
+      "title": "Data Types - Numbers",
+      "position": "right",
+      "content": "Data Types in Python - Part 1\n\nWhat are Data Types?\nData types define what kind of data a variable holds.\n\n🔢 Numbers in Python:\n\nIntegers (whole numbers):\nage = 25\nstudents = 100\n\nFloats (decimal numbers):\nprice = 19.99\ntemperature = 98.6\n\n📝 Examples:\nprint(5 + 3)        # Output: 8\nprint(10 - 2)       # Output: 8\nprint(4 * 5)        # Output: 20\nprint(20 / 4)       # Output: 5.0\nprint(10 % 3)       # Output: 1 (remainder)\nprint(2 ** 3)       # Output: 8 (power)\n\n💡 Operations:\n+ Addition\n- Subtraction\n* Multiplication\n/ Division\n% Modulo (remainder)\n** Power/Exponent",
+      "examples": [
+        {
+          "question": "What's the difference between 5 and 5.0?",
+          "solution": "5 is an integer (whole number)\n5.0 is a float (decimal number)\n\nPython treats them differently:\ntype(5) → int\ntype(5.0) → float"
+        },
+        {
+          "question": "What does 10 % 3 equal?",
+          "solution": "10 % 3 = 1\n\nThe % is modulo (remainder)\n10 divided by 3 = 3 remainder 1\nSo the answer is 1"
+        }
+      ]
+    },
+    {
+      "id": "python_solver_1",
+      "type": "interactive",
+      "title": "🎯 Practice: Number Operations",
+      "position": "left",
+      "problem": "What is the output of: print(15 + 6)",
+      "expectedSteps": 1,
+      "hints": [
+        "This is simple addition",
+        "15 + 6 = ?",
+        "The answer should be 21"
+      ],
+      "solution": "21",
+      "explanation": "To solve: print(15 + 6)\n1. Python adds 15 + 6 = 21\n2. print() displays: 21"
+    },
+    {
+      "id": "python_quiz_2",
+      "type": "quiz",
+      "title": "Numbers & Arithmetic",
+      "position": "right",
+      "questions": [
+        {
+          "question": "What is 10 + 5?",
+          "options": ["5", "15", "50", "105"],
+          "answer": "15"
+        },
+        {
+          "question": "What type is 3.14?",
+          "options": ["Integer", "Float", "String", "Boolean"],
+          "answer": "Float"
+        },
+        {
+          "question": "What does 20 / 4 equal?",
+          "options": ["4", "5", "5.0", "24"],
+          "answer": "5.0"
+        },
+        {
+          "question": "What is 2 ** 3?",
+          "options": ["5", "6", "8", "23"],
+          "answer": "8"
+        },
+        {
+          "question": "What is 17 % 5?",
+          "options": ["3", "2", "12", "22"],
+          "answer": "2"
+        },
+        {
+          "question": "What symbol is used for multiplication?",
+          "options": ["x", "*", "^", "·"],
+          "answer": "*"
+        },
+        {
+          "question": "What is 100 - 45?",
+          "options": ["45", "55", "65", "145"],
+          "answer": "55"
+        },
+        {
+          "question": "Is 42 an integer or float?",
+          "options": ["Integer", "Float", "String", "Both"],
+          "answer": "Integer"
+        }
+      ]
+    },
+    {
+      "id": "python_lesson_3_part_1",
+      "type": "lesson",
+      "title": "Data Types - Strings",
+      "position": "left",
+      "content": "Data Types in Python - Part 2\n\nWhat are Strings?\nStrings are text - any characters inside quotes!\n\n📝 Creating Strings:\nname = \"Alice\"\nmessage = 'Hello World'\nsentence = \"Python is awesome!\"\n\n🎯 Single vs Double Quotes:\nBoth work the same!\n\"Hello\" = 'Hello'\n\n✨ String Operations:\n\nConcatenation (joining):\nfirst = \"John\"\nlast = \"Doe\"\nfull_name = first + \" \" + last\nprint(full_name)  # Output: John Doe\n\nRepetition (repeating):\nprint(\"Ha\" * 3)  # Output: HaHaHa\n\nLength (counting characters):\ntext = \"Python\"\nlen(text)  # Output: 6\n\n💡 Tips:\n• Use + to combine strings\n• Use * to repeat strings\n• Use len() to count characters",
+      "examples": [
+        {
+          "question": "How do I combine two strings?",
+          "solution": "Use the + operator:\nfirst = \"Hello\"\nsecond = \"World\"\nresult = first + \" \" + second\nprint(result)  # Output: Hello World"
+        },
+        {
+          "question": "How many characters are in 'Python'?",
+          "solution": "Use len():\nprint(len(\"Python\"))  # Output: 6\n\nP-y-t-h-o-n = 6 characters"
+        }
+      ]
+    },
+    {
+      "id": "python_solver_2",
+      "type": "interactive",
+      "title": "🎯 Practice: String Operations",
+      "position": "right",
+      "problem": "What is the output of: print(\"Code\" + \"r\")",
+      "expectedSteps": 1,
+      "hints": [
+        "This uses string concatenation (joining)",
+        "\"Code\" + \"r\" combines the strings",
+        "The result should be 'Coder'"
+      ],
+      "solution": "Coder",
+      "explanation": "To solve: print(\"Code\" + \"r\")\n1. Python joins \"Code\" + \"r\" = \"Coder\"\n2. print() displays: Coder"
+    },
+    {
+      "id": "python_quiz_3",
+      "type": "quiz",
+      "title": "Strings & Text",
+      "position": "left",
+      "questions": [
+        {
+          "question": "What does this output?\nprint(\"Hi\" + \"!\")",
+          "options": ["Hi!", "Hi + !", "2", "Error"],
+          "answer": "Hi!"
+        },
+        {
+          "question": "What is len(\"Python\")?",
+          "options": ["5", "6", "7", "8"],
+          "answer": "6"
+        },
+        {
+          "question": "What will this show?\nprint(\"Na\" * 3)",
+          "options": ["Na3", "NaNaNa", "3Na", "Na Na Na"],
+          "answer": "NaNaNa"
+        },
+        {
+          "question": "Which creates a string?",
+          "options": ["123", "'Hello'", "[1,2,3]", "True"],
+          "answer": "'Hello'"
+        },
+        {
+          "question": "What is len(\"Code\")?",
+          "options": ["3", "4", "5", "Error"],
+          "answer": "4"
+        },
+        {
+          "question": "Can you use single AND double quotes?",
+          "options": ["No, only single", "No, only double", "Yes, both work", "Only for strings"],
+          "answer": "Yes, both work"
+        },
+        {
+          "question": "What does + do with strings?",
+          "options": ["Adds numbers", "Joins strings", "Repeats text", "Counts length"],
+          "answer": "Joins strings"
+        },
+        {
+          "question": "What is len(\"123456\")?",
+          "options": ["123456", "6", "3", "Error"],
+          "answer": "6"
+        }
+      ]
+    },
+    {
+      "id": "python_lesson_4_part_1",
+      "type": "lesson",
+      "title": "Data Types - Booleans",
+      "position": "right",
+      "content": "Data Types in Python - Part 3\n\nWhat are Booleans?\nBooleans are True or False values!\n\n✓ Boolean Values:\nTrue\nFalse\n\n📝 Examples:\nis_student = True\nhas_license = False\nprint(is_student)  # Output: True\n\n🎯 Comparisons (return True/False):\n5 > 3        # True\n10 < 5       # False\n7 == 7       # True (equals)\n5 != 3       # True (not equals)\n10 >= 10     # True\n\n💡 Comparison Operators:\n== Equal to\n!= Not equal to\n> Greater than\n< Less than\n>= Greater or equal\n<= Less or equal\n\n🔗 Logical Operators:\nand - Both must be True\nor - One must be True\nnot - Reverses True/False\n\nExample:\nage = 25\nage > 18 and age < 65  # True",
+      "examples": [
+        {
+          "question": "What does 5 == 5 return?",
+          "solution": "True\n\n== is the equality operator\n5 equals 5, so the answer is True"
+        },
+        {
+          "question": "What is True or False?",
+          "solution": "True\n\nWith 'or', if ONE is True, the result is True\nSo: True or False = True"
+        }
+      ]
+    },
+    {
+      "id": "python_solver_3",
+      "type": "interactive",
+      "title": "🎯 Practice: Boolean Logic",
+      "position": "left",
+      "problem": "What is: 10 > 5 and 3 < 10",
+      "expectedSteps": 2,
+      "hints": [
+        "First evaluate: 10 > 5",
+        "That's True",
+        "Then evaluate: 3 < 10",
+        "That's also True",
+        "True and True = True"
+      ],
+      "solution": "True",
+      "explanation": "To solve: 10 > 5 and 3 < 10\n1. 10 > 5 is True\n2. 3 < 10 is True\n3. True and True = True"
+    },
+    {
+      "id": "python_quiz_4",
+      "type": "quiz",
+      "title": "Booleans & Comparisons",
+      "position": "right",
+      "questions": [
+        {
+          "question": "What does 5 > 3 return?",
+          "options": ["False", "True", "8", "2"],
+          "answer": "True"
+        },
+        {
+          "question": "Is True == True?",
+          "options": ["False", "True", "Error", "Maybe"],
+          "answer": "True"
+        },
+        {
+          "question": "What is 10 == 5?",
+          "options": ["True", "False", "15", "2"],
+          "answer": "False"
+        },
+        {
+          "question": "What does != mean?",
+          "options": ["Equals", "Not equals", "Greater than", "Less than"],
+          "answer": "Not equals"
+        },
+        {
+          "question": "Is True and False = True?",
+          "options": ["Yes", "No", "Maybe", "Error"],
+          "answer": "No"
+        },
+        {
+          "question": "Is True or False = True?",
+          "options": ["Yes", "No", "Maybe", "Error"],
+          "answer": "Yes"
+        },
+        {
+          "question": "What is 7 != 7?",
+          "options": ["True", "False", "14", "0"],
+          "answer": "False"
+        },
+        {
+          "question": "What is not True?",
+          "options": ["True", "False", "1", "Error"],
+          "answer": "False"
+        }
+      ]
+    },
+    {
+      "id": "python_lesson_5_part_1",
+      "type": "lesson",
+      "title": "Variables & Assignment",
+      "position": "left",
+      "content": "Working with Variables\n\nWhat are Variables?\nVariables store data that you can use and change!\n\n📝 Creating Variables:\nname = \"Alice\"\nage = 25\ngpa = 3.8\nis_student = True\n\n🎯 Naming Variables:\n✓ Good names: student_name, user_age, is_valid\n✗ Bad names: x, a, data, stuff\n\n💡 Rules:\n• Start with a letter or underscore\n• Use only letters, numbers, underscores\n• No spaces in names\n• Python is case-sensitive (age ≠ Age)\n\n📝 Using Variables:\nfirst_name = \"John\"\nlast_name = \"Smith\"\nfull_name = first_name + \" \" + last_name\nprint(full_name)  # Output: John Smith\n\nprint(type(first_name))  # Output: <class 'str'>\nprint(type(25))          # Output: <class 'int'>",
+      "examples": [
+        {
+          "question": "How do I create a variable?",
+          "solution": "Use = to assign:\nvariable_name = value\n\nExamples:\nuser = \"Bob\"\nscore = 95\nis_active = True"
+        },
+        {
+          "question": "What's the best way to name variables?",
+          "solution": "Use descriptive names that tell you what the variable stores:\n✓ student_name\n✓ user_age\n✓ is_verified\n✗ x\n✗ data\n✗ stuff"
+        }
+      ]
+    },
+    {
+      "id": "python_solver_4",
+      "type": "interactive",
+      "title": "🎯 Practice: Variables",
+      "position": "right",
+      "problem": "What is the output?\nname = \"Python\"\nprint(name)",
+      "expectedSteps": 2,
+      "hints": [
+        "First, the variable 'name' stores the string \"Python\"",
+        "Then print() displays what's stored in 'name'",
+        "The output should be: Python"
+      ],
+      "solution": "Python",
+      "explanation": "To solve:\n1. name = \"Python\" stores the text\n2. print(name) displays: Python"
+    },
+    {
+      "id": "python_quiz_5",
+      "type": "quiz",
+      "title": "Variables & Data Assignment",
+      "position": "left",
+      "questions": [
+        {
+          "question": "What does = do?",
+          "options": ["Compares", "Assigns/stores", "Adds", "Deletes"],
+          "answer": "Assigns/stores"
+        },
+        {
+          "question": "Is 'user_name' a valid variable name?",
+          "options": ["No", "Yes", "Only partially", "Error"],
+          "answer": "Yes"
+        },
+        {
+          "question": "What will this output?\nx = 10\nprint(x)",
+          "options": ["10", "x", "x=10", "Error"],
+          "answer": "10"
+        },
+        {
+          "question": "Can variable names have spaces?",
+          "options": ["Yes", "No", "Sometimes", "Only one"],
+          "answer": "No"
+        },
+        {
+          "question": "What is the value of y?\ny = 5 + 3",
+          "options": ["5", "3", "8", "53"],
+          "answer": "8"
+        },
+        {
+          "question": "Is Python case-sensitive for variables?",
+          "options": ["No", "Yes", "Only for strings", "Unknown"],
+          "answer": "Yes"
+        },
+        {
+          "question": "What does type() do?",
+          "options": ["Types text", "Shows data type", "Creates variables", "Prints value"],
+          "answer": "Shows data type"
+        },
+        {
+          "question": "What will this show?\nprint(type(25))",
+          "options": ["25", "<class 'int'>", "int", "Number"],
+          "answer": "<class 'int'>"
+        }
+      ]
+    },
+    {
+      "id": "python_quiz_6",
+      "type": "quiz",
+      "title": "Comprehensive Python Review",
+      "position": "right",
+      "questions": [
+        {
+          "question": "Which is NOT a data type?",
+          "options": ["int", "string", "function", "float"],
+          "answer": "function"
+        },
+        {
+          "question": "What is 'Hello' + 'World'?",
+          "options": ["HelloWorld", "Hello World", "2", "Error"],
+          "answer": "HelloWorld"
+        },
+        {
+          "question": "What does len('abc') return?",
+          "options": ["1", "2", "3", "'abc'"],
+          "answer": "3"
+        },
+        {
+          "question": "Is 5 == '5'?",
+          "options": ["True", "False", "Maybe", "Error"],
+          "answer": "False"
+        },
+        {
+          "question": "What will print(5 * 2) show?",
+          "options": ["52", "10", "5*2", "Error"],
+          "answer": "10"
+        },
+        {
+          "question": "What is the correct print syntax?",
+          "options": ["print Hello", "print('Hello')", "Print('Hello')", "PRINT('Hello')"],
+          "answer": "print('Hello')"
+        },
+        {
+          "question": "Can you use 'print' as a variable name?",
+          "options": ["Yes, always", "No, it's a function", "Only once", "In strings only"],
+          "answer": "No, it's a function"
+        },
+        {
+          "question": "What is type(True)?",
+          "options": ["str", "int", "bool", "function"],
+          "answer": "bool"
+        }
+      ]
+    },
+    {
+      "id": "python_chest_1",
+      "type": "chest",
+      "title": "🎁 Python Interpreter Bonus",
+      "position": "left",
+      "content": "🎁 Python Interpreter Tool\n\nYou've unlocked the Python Interpreter!\n\n💻 Try it out:\nTest all the code you've learned!\n\n✨ Features:\n• Run Python code instantly\n• See immediate results\n• Experiment with data types\n• Practice printing\n• Test operations\n• Debug your code\n\n🎯 Next:\n• Functions\n• Control Flow (if/else)\n• Loops\n• Lists & Dictionaries"
+    },
+    {
+      "id": "python_final",
+      "type": "trophy",
+      "title": "🏆 Python Basics Complete!",
+      "position": "right",
+      "content": "🏆 Congratulations! You've completed Python Basics!\n\n✅ You've mastered:\n• Python introduction\n• Print statements\n• Data types (Numbers, Strings, Booleans)\n• Arithmetic operations\n• String concatenation\n• Comparisons & logic\n• Variables & assignment\n• Type checking\n\n🎉 You're ready for advanced topics!\n\n💪 Keep coding and exploring!"
+    }
+  ]
+}

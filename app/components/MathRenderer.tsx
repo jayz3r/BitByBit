@@ -35,7 +35,7 @@ const MathRenderer = memo(function MathRenderer({ content }: { content: string }
   return (
     <div
       ref={containerRef}
-      className="text-sm leading-relaxed whitespace-pre-wrap break-words"
+      className="text-sm leading-relaxed whitespace-pre-wrap break-words text-black"
       dangerouslySetInnerHTML={{ __html: content }}
     />
   );

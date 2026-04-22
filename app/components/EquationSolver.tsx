@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import MathRenderer from "./MathRenderer";
 
 interface Step {
@@ -21,6 +22,12 @@ export default function EquationSolver({
   expectedSteps: number;
   hints?: string[];
 }) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const courseId = searchParams.get("course") || "math";
+  const subCourseId = searchParams.get("subcourse") || "pre-algebra";
+  const onComplete = searchParams.get("onComplete");
+
   const [steps, setSteps] = useState<Step[]>([
     {
       id: "0",
@@ -37,6 +44,7 @@ export default function EquationSolver({
   const [showHint, setShowHint] = useState(false);
   const [currentHintIndex, setCurrentHintIndex] = useState(0);
   const [score, setScore] = useState(0);
+  const [isComplete, setIsComplete] = useState(false);
 
   const verifyStep = useCallback(
     async (equation: string) => {
@@ -75,9 +83,13 @@ export default function EquationSolver({
           setScore((prev) => prev + 10);
           setShowHint(false);
           setCurrentHintIndex(0);
-        }
+          setCurrentStepInput("");
 
-        setCurrentStepInput("");
+          // Check if this is the final step
+          if (data.isFinal || steps.length >= expectedSteps) {
+            setIsComplete(true);
+          }
+        }
       } catch (error) {
         console.error("Error verifying step:", error);
         const errorStep: Step = {
@@ -93,8 +105,31 @@ export default function EquationSolver({
         setLoading(false);
       }
     },
-    [steps, problem]
+    [steps, problem, expectedSteps]
   );
+
+  // Auto-advance after completing
+  useEffect(() => {
+    if (!isComplete) return;
+
+    const timer = setTimeout(() => {
+      // Mark lesson as complete
+      if (onComplete) {
+        const key = `completed_${courseId}_${subCourseId}`;
+        const saved = localStorage.getItem(key);
+        const completed = saved ? JSON.parse(saved) : [];
+        if (!completed.includes(onComplete)) {
+          completed.push(onComplete);
+          localStorage.setItem(key, JSON.stringify(completed));
+        }
+      }
+
+      // Navigate back to lessons
+      router.push(`/learn/${courseId}/${subCourseId}`);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [isComplete, router, courseId, subCourseId, onComplete]);
 
   const handleAddStep = async () => {
     if (!currentStepInput.trim()) return;
@@ -113,7 +148,6 @@ export default function EquationSolver({
     }
   };
 
-  const isComplete = steps.length > expectedSteps + 1;
   const progress = Math.min(((steps.length - 1) / expectedSteps) * 100, 100);
 
   return (
@@ -229,8 +263,9 @@ export default function EquationSolver({
               value={currentStepInput}
               onChange={(e) => setCurrentStepInput(e.target.value)}
               placeholder="e.g., 2x = 10"
-              className="w-full px-4 py-3 rounded-xl border-2 border-purple-300 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition font-mono"
+              className="w-full px-4 py-3 rounded-xl border-2 border-purple-300 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition font-mono text-black placeholder-gray-400"
               onKeyPress={(e) => e.key === "Enter" && handleAddStep()}
+              disabled={loading}
             />
             <p className="text-xs text-slate-500 mt-2">
               📝 Type the equation after applying one operation
@@ -268,12 +303,10 @@ export default function EquationSolver({
           <p className="text-2xl font-bold mb-4">
             Final Score: <span className="text-yellow-200">{score} points</span>
           </p>
-          <button
-            onClick={() => window.history.back()}
-            className="px-8 py-3 bg-white text-green-600 font-bold rounded-xl hover:bg-slate-100 transition"
-          >
-            Continue Learning →
-          </button>
+          <p className="text-sm mb-4 opacity-90">Redirecting in 3 seconds...</p>
+          <div className="inline-block">
+            <div className="w-8 h-8 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
+          </div>
         </div>
       )}
     </div>

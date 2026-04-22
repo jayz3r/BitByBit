@@ -54,21 +54,40 @@ export default function LessonsPage() {
           });
         }
 
+        // Map subCourseId to data file
+        const fileMapping: { [key: string]: string } = {
+          "pre-algebra": "math",
+          "algebra-1": "math",
+          "geometry": "math",
+          "python-basics": "python",
+          "javascript": "javascript",
+          "web-dev": "web-dev",
+          "physics": "physics",
+          "chemistry": "chemistry",
+          "biology": "biology",
+          "ort": "ort",
+          "ielts": "ielts",
+          "sat": "sat",
+        };
+
+        const dataFileName = fileMapping[subCourseId] || courseId;
+
         // Load course data
-        let dataResponse = await fetch(
-          `/data/${courseId}-${subCourseId}.json`
-        );
+        let dataResponse = await fetch(`/data/${dataFileName}.json`);
 
         if (!dataResponse.ok) {
           dataResponse = await fetch(`/data/${courseId}.json`);
         }
 
-        if (dataResponse.ok) {
-          const data = await dataResponse.json();
-          setLessons(data.path || []);
+        if (!dataResponse.ok) {
+          throw new Error("Failed to load lesson data");
         }
+
+        const data = await dataResponse.json();
+        setLessons(data.path || []);
       } catch (error) {
         console.error("Error loading content:", error);
+        setLessons([]);
       } finally {
         setLoading(false);
       }
@@ -80,15 +99,6 @@ export default function LessonsPage() {
   const isLessonLocked = (index: number) => {
     if (index === 0) return false; // First lesson is always available
     return !completedLessons.has(lessons[index - 1].id);
-  };
-
-  const markLessonComplete = (lessonId: string) => {
-    const updated = new Set(completedLessons);
-    updated.add(lessonId);
-    setCompletedLessons(updated);
-    
-    const key = `completed_${courseId}_${subCourseId}`;
-    localStorage.setItem(key, JSON.stringify(Array.from(updated)));
   };
 
   if (loading) {
